@@ -1,0 +1,55 @@
+# Git
+.git/
+.gitignore
+
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Notebooks
+.ipynb_checkpoints
+
+# Data files (we don't want large data in Docker image)
+*.csv
+*.pkl
+*.h5
+*.model
+*.joblib
+data/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Docker itself
+Dockerfile
+docker-compose.yml
+deployment/
+
+# Tests (optional - exclude if not needed in production)
+tests/
+
+# Notebooks (optional - exclude if not needed in production)
+notebooks/
