@@ -77,13 +77,14 @@ p.fit(X_scaled, y)
 # -----------------------------
 input_scaled = scaler.transform(input_df)
 prediction = p.predict(input_scaled)
-prediction_proba = p.decision_function(input_scaled)
+prediction_scores = p.decision_function(input_scaled)
 
 st.subheader('Prediction')
 st.write(f"The predicted flower type is: **{iris.target_names[prediction][0]}**")
 
-st.subheader('Prediction Confidence')
-st.write(f"Decision function value: {prediction_proba[0]:.2f}")
+st.subheader('Prediction Confidence Scores')
+st.write("Decision function scores for each class:", prediction_scores[0])
+st.write(f"Highest confidence score: {np.max(prediction_scores[0]):.2f}")
 
 # -----------------------------
 # Model Performance

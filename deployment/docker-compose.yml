@@ -1,11 +1,21 @@
 version: '3.8'
 
 services:
-  streamlit-app:
-    build: .
+  ml-app:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
     ports:
       - "8501:8501"
     volumes:
-      - .:/app
-    container_name: iris-perceptron-app
+      - ../src:/app/src
+      - ../notebooks:/app/notebooks
+    environment:
+      - PYTHONPATH=/app/src
+    container_name: perceptron-ml-app
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
